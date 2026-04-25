@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homestance — Your Home in Mumbai, Managed</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAFAF7;
+    --ink: #1A1612;
+    --ink-soft: #3D3530;
+    --terracotta: #C4714A;
+    --terracotta-light: #D98B65;
+    --sage: #7A8C6E;
+    --gold: #B89560;
+    --gold-light: #D4B078;
+    --border: rgba(26,22,18,0.12);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(250,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--terracotta); }
+  nav ul {
+    list-style: none;
+    display: flex; gap: 2.5rem;
+  }
+  nav ul a {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--terracotta); }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream) !important;
+    background: var(--ink);
+    padding: 0.65rem 1.5rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--terracotta) !important; color: var(--cream) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px; height: 1px;
+    background: var(--terracotta);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--terracotta);
+    padding: 1rem 2.25rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #A85E3A; transform: translateY(-1px); }
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #D4A574 0%, #C4714A 35%, #8B4513 70%, #3D2B1F 100%);
+    z-index: 0;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; z-index: 1;
+    opacity: 0.07;
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.5) 35px, rgba(255,255,255,0.5) 36px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,255,255,0.5) 35px, rgba(255,255,255,0.5) 36px);
+  }
+  .hero-right-content {
+    position: relative; z-index: 2;
+    height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 4rem;
+    color: var(--cream);
+  }
+  .hero-stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255,255,255,0.15);
+  }
+  .hero-stat {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .hero-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+  .hero-badge {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+
+  /* SECTION SHARED */
+  section { position: relative; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  /* PROBLEM */
+  .problem {
+    background: var(--ink);
+    padding: 7rem 0;
+  }
+  .problem .section-title { color: var(--cream); }
+  .problem .section-label { color: var(--gold-light); }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  .problem-text {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.7);
+  }
+  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+  .problem-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.6;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(245,240,232,0.08);
+  }
+  .problem-list li::before {
+    content: '—';
+    color: var(--terracotta-light);
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  /* HOW IT WORKS */
+  .how { padding: 7rem 0; background: var(--cream); }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    border: 1px solid var(--border);
+  }
+  .step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.3s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: rgba(196,113,74,0.04); }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(196,113,74,0.18);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    opacity: 0.8;
+  }
+
+  /* PLANS */
+  .plans { padding: 7rem 0; background: var(--warm-white); }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 4rem;
+    background: var(--border);
+  }
+  .plan {
+    background: var(--warm-white);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .plan.recommended {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .plan-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .plan-name {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 0.25rem;
+    color: inherit;
+  }
+  .plan.recommended .plan-name { color: var(--cream); }
+  .plan-tagline {
+    font-size: 0.8rem;
+    color: rgba(61,53,48,0.6);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+  .plan.recommended .plan-tagline { color: rgba(245,240,232,0.55); }
+  .plan-price {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--terracotta);
+    margin-bottom: 0.25rem;
+  }
+  .plan.recommended .plan-price { color: var(--gold-light); }
+  .plan-period {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: rgba(61,53,48,0.5);
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+  }
+  .plan.recommended .plan-period { color: rgba(245,240,232,0.4); }
+  .plan-divider {
+    width: 32px; height: 1px;
+    background: var(--border);
+    margin-bottom: 2rem;
+  }
+  .plan.recommended .plan-divider { background: rgba(245,240,232,0.15); }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2.5rem; }
+  .plan-features li {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .plan.recommended .plan-features li { color: rgba(245,240,232,0.75); }
+  .plan-features li::before {
+    content: '✓';
+    font-size: 0.7rem;
+    color: var(--sage);
+    flex-shrink: 0;
+    margin-top: 0.15em;
+    font-weight: 500;
+  }
+  .plan.recommended .plan-features li::before { color: var(--gold-light); }
+  .btn-plan {
+    display: block;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid var(--border);
+    color: var(--ink);
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-plan:hover { border-color: var(--terracotta); color: var(--terracotta); }
+  .plan.recommended .btn-plan {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--cream);
+  }
+  .plan.recommended .btn-plan:hover { background: var(--terracotta-light); }
+
+  /* ADD-ON */
+  .addon {
+    margin-top: 1.5px;
+    background: var(--cream);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .addon-left { flex: 1; }
+  .addon-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .addon-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .addon-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
+  .addon-price {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--terracotta);
+    white-space: nowrap;
+  }
+
+  /* FOR WHOM */
+  .for-whom { padding: 7rem 0; background: var(--cream); }
+  .audiences {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .audience {
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .audience:hover { border-color: var(--terracotta); }
+  .audience-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(196,113,74,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .audience-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .audience-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.65; }
+
+  /* WHY */
+  .why { padding: 7rem 0; background: var(--warm-white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 4rem;
+    align-items: center;
+  }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .why-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .why-item:first-child { border-top: 1px solid var(--border); }
+  .why-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    margin-top: 0.1em;
+    color: var(--terracotta);
+  }
+  .why-item-content {}
+  .why-item-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.35rem;
+    color: var(--ink);
+  }
+  .why-item-desc { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.6; }
+  .why-visual {
+    background: var(--ink);
+    padding: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0, transparent 20px,
+      rgba(196,113,74,0.04) 20px, rgba(196,113,74,0.04) 21px
+    );
+  }
+  .why-quote {
+    position: relative; z-index: 1;
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+  .why-quote span { color: var(--terracotta-light); }
+  .why-attr {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(245,240,232,0.08);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--cream);
+  }
+  .footer-logo span { color: var(--terracotta); }
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+  .footer-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--terracotta-light); }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.25);
+  }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--terracotta);
+    padding: 5rem 0;
+    text-align: center;
+  }
+  .cta-strip .section-label { color: rgba(245,240,232,0.7); justify-content: center; }
+  .cta-strip-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .cta-strip-sub {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.75);
+    margin-bottom: 2.5rem;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+  .btn-cta-white {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: var(--cream);
+    padding: 1.1rem 2.75rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-cta-white:hover { background: #fff; transform: translateY(-2px); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-title { animation: fadeUp 0.7s ease 0.2s both; }
+  .hero-subtitle { animation: fadeUp 0.7s ease 0.35s both; }
+  .hero-actions { animation: fadeUp 0.6s ease 0.5s both; }
+  .hero-right-content { animation: fadeUp 0.8s ease 0.4s both; }
+
+  /* CLARIFICATIONS */
+  .clarifications {
+    background: var(--cream);
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .clarif-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 1px solid var(--border);
+  }
+  .clarif-item {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .clarif-item:last-child { border-right: none; }
+  .clarif-dot {
+    width: 8px; height: 8px;
+    background: var(--sage);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.4em;
+  }
+  .clarif-text { font-size: 0.84rem; color: var(--ink-soft); line-height: 1.6; }
+  .clarif-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .hero-right { min-height: 300px; }
+    .section-inner { padding: 0 1.5rem; }
+    .problem-grid, .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .steps, .plans-grid { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--border); }
+    .audiences { grid-template-columns: 1fr; }
+    .clarif-grid, .footer-inner { flex-direction: column; }
+    .clarif-grid { grid-template-columns: 1fr; }
+    .clarif-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .footer-inner { text-align: center; }
+    .addon { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Home<span>stance</span></a>
+  <ul>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#plans">Plans</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Mumbai Property Management</p>
+    <h1 class="hero-title">Your home,<br><em>managed</em><br>without you.</h1>
+    <p class="hero-subtitle">Homestance is the on-ground partner for property owners who live outside Mumbai — giving you complete visibility, coordination, and peace of mind.</p>
+    <div class="hero-actions">
+      <a href="#plans" class="btn-primary">See Our Plans</a>
+      <a href="#how" class="btn-ghost">How it works →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-right-content">
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Plans tailored<br>to your needs</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Funds held<br>by Homestance</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1</div>
+          <div class="hero-stat-label">City. Mumbai.<br>Done right.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">∞</div>
+          <div class="hero-stat-label">Visibility &<br>proof of work</div>
+        </div>
+      </div>
+      <div class="hero-badge">"Your property is too valuable to be managed casually."</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-inner">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-title" style="color: var(--cream);">Remote ownership is <em style="color: var(--terracotta-light)">hard</em>.</h2>
+    <div class="problem-grid">
+      <p class="problem-text">
+        When your property is in Mumbai and you are not, small issues quietly become expensive ones — and you're always the last to know.
+      </p>
+      <ul class="problem-list">
+        <li>You don't know the actual condition of your home</li>
+        <li>Tenants and vendors operate without accountability</li>
+        <li>Small issues escalate into expensive repairs</li>
+        <li>You spend hours chasing updates that should come to you</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <p class="section-label">The Process</p>
+    <h2 class="section-title">Simple, structured,<br><em>reliable</em>.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Onboard Your Property</div>
+        <div class="step-desc">Share your property details with us. We take it from there — no paperwork maze on your end.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">We Set Up Your Profile</div>
+        <div class="step-desc">We document your property, tenant situation, and preferences to build a clear foundation for management.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">On-Ground Coordination</div>
+        <div class="step-desc">We handle vendors, tenants, issues, inspections, and legal coordination — with owner approval always required.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">You Receive Full Visibility</div>
+        <div class="step-desc">Photo proof, structured updates, condition reports, and complete records — delivered to you, not chased by you.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="section-inner">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Choose your level<br>of <em>involvement</em>.</h2>
+    <div class="plans-grid">
+      <!-- LITE -->
+      <div class="plan">
+        <div class="plan-name">Lite</div>
+        <div class="plan-tagline">Essential support, legal setup & ongoing coordination</div>
+        <div class="plan-price">₹3,499</div>
+        <div class="plan-period">per month</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Monthly rent tracking & follow-ups</li>
+          <li>Tenant coordination & queries</li>
+          <li>Issue logging & vendor connection</li>
+          <li>Rental agreement drafting & notarization</li>
+          <li>Police verification of tenant</li>
+          <li>Verified vendor network access</li>
+          <li>Service tracking & basic updates</li>
+        </ul>
+        <a href="#contact" class="btn-plan">Get Started</a>
+      </div>
+      <!-- STANDARD -->
+      <div class="plan recommended">
+        <span class="plan-badge">★ Recommended</span>
+        <div class="plan-name">Standard</div>
+        <div class="plan-tagline">Active management with periodic on-ground visibility</div>
+        <div class="plan-price">₹5,999</div>
+        <div class="plan-period">per month</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Everything in Lite</li>
+          <li>Quarterly on-ground property inspection</li>
+          <li>Photo & video condition reports</li>
+          <li>End-to-end maintenance coordination</li>
+          <li>On-ground supervision of work</li>
+          <li>Before & after photo proof</li>
+          <li>Tenant move-in coordination</li>
+          <li>Priority support & active follow-ups</li>
+        </ul>
+        <a href="#contact" class="btn-plan">Get Started</a>
+      </div>
+      <!-- PREMIUM -->
+      <div class="plan">
+        <div class="plan-name">Premium</div>
+        <div class="plan-tagline">Fully hands-off, high-touch experience</div>
+        <div class="plan-price">₹8,999</div>
+        <div class="plan-period">per month</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Everything in Standard</li>
+          <li>Dedicated Relationship Manager</li>
+          <li>Proactive preventive checks</li>
+          <li>Early issue identification</li>
+          <li>Priority vendor scheduling</li>
+          <li>Society office coordination</li>
+          <li>Complex escalation handling</li>
+          <li>High-touch concierge support</li>
+        </ul>
+        <a href="#contact" class="btn-plan">Get Started</a>
+      </div>
+    </div>
+    <!-- ADD-ON -->
+    <div class="addon">
+      <div class="addon-left">
+        <div class="addon-label">Add-On Service</div>
+        <div class="addon-title">Tenant Sourcing</div>
+        <div class="addon-desc">Listing coordination, lead management, property visit scheduling, negotiation support — until your tenant is finalized.</div>
+      </div>
+      <div class="addon-price">1 month's rent</div>
+      <a href="#contact" class="btn-plan" style="white-space:nowrap; flex-shrink:0;">Enquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLARIFICATIONS -->
+<div class="clarifications">
+  <div class="section-inner">
+    <div class="clarif-grid">
+      <div class="clarif-item">
+        <div class="clarif-dot"></div>
+        <div class="clarif-text"><strong>Rent paid directly to you</strong>Homestance never holds or handles your funds. Rent goes straight from tenant to owner.</div>
+      </div>
+      <div class="clarif-item">
+        <div class="clarif-dot"></div>
+        <div class="clarif-text"><strong>Owner approval always required</strong>No expenses are executed without your explicit approval. You stay in control.</div>
+      </div>
+      <div class="clarif-item">
+        <div class="clarif-dot"></div>
+        <div class="clarif-text"><strong>Third-party charges extra</strong>Notarization, police verification fees, and similar charges are billed at actuals.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR WHOM -->
+<section class="for-whom">
+  <div class="section-inner">
+    <p class="section-label">Who We Serve</p>
+    <h2 class="section-title">Built for owners<br><em>away</em> from Mumbai.</h2>
+    <div class="audiences">
+      <div class="audience">
+        <div class="audience-icon">✈️</div>
+        <div class="audience-title">NRIs with Mumbai Property</div>
+        <div class="audience-desc">You've invested in Mumbai but can't be there. We ensure your asset is protected, occupied, and generating returns — without requiring your presence.</div>
+      </div>
+      <div class="audience">
+        <div class="audience-icon">🏙️</div>
+        <div class="audience-title">Owners in Other Cities</div>
+        <div class="audience-desc">Living in Delhi, Bengaluru, or abroad? Managing a Mumbai property from a distance is stressful. We become your local representative.</div>
+      </div>
+      <div class="audience">
+        <div class="audience-icon">💼</div>
+        <div class="audience-title">Busy Professionals</div>
+        <div class="audience-desc">Your time is valuable. Chasing tenants and coordinating repairs shouldn't be on your calendar. Let us handle it end-to-end.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <p class="section-label">Why Homestance</p>
+    <h2 class="section-title">Managed with<br><em>precision</em>.</h2>
+    <div class="why-grid">
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-icon">◎</div>
+          <div class="why-item-content">
+            <div class="why-item-title">Mumbai-Focused Execution</div>
+            <div class="why-item-desc">We operate exclusively in Mumbai. Deep local knowledge, verified vendor networks, and on-ground presence — only where it matters for your property.</div>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">≡</div>
+          <div class="why-item-content">
+            <div class="why-item-title">Structured & Process-Driven</div>
+            <div class="why-item-desc">Every action follows a checklist. Every update is structured. No ad hoc coordination, no verbal assurances — just documented, traceable management.</div>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">◻</div>
+          <div class="why-item-content">
+            <div class="why-item-title">Proof-Based Updates</div>
+            <div class="why-item-desc">Photos, videos, condition reports, and service logs — you receive verified evidence of everything that happens at your property.</div>
+          </div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">◉</div>
+          <div class="why-item-content">
+            <div class="why-item-title">Reliable On-Ground Presence</div>
+            <div class="why-item-desc">When issues arise, someone is already there. No delays waiting for someone to travel or coordinate. We are your eyes and ears in Mumbai.</div>
+          </div>
+        </li>
+      </ul>
+      <div class="why-visual">
+        <div class="why-quote">"Your property is too valuable to be managed <span>casually</span>."</div>
+        <div class="why-attr">— Homestance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip" id="contact">
+  <div class="section-inner" style="text-align:center">
+    <p class="section-label" style="display:block; text-align:center; margin-bottom:1rem;">Get Started</p>
+    <h2 class="cta-strip-title">Ready to stop worrying<br>about your Mumbai home?</h2>
+    <p class="cta-strip-sub">Onboard your property today. We'll handle everything from here.</p>
+    <a href="mailto:hello@homestance.in" class="btn-cta-white">Talk to Us</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Home<span>stance</span></div>
+      <div class="footer-tagline">Mumbai Property Management · Managed Right</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 Homestance Private Limited</div>
+  </div>
+</footer>
+
+</body>
+</html>
