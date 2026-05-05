@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -728,6 +729,53 @@ footer {
   .process-grid { grid-template-columns: 1fr; }
 
 }
+
+/* ── FAQ SECTION ── */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  border-top: 1px solid var(--rule);
+}
+.faq-item {
+  border-bottom: 1px solid var(--rule);
+}
+.faq-question {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease;
+  font-size: 0.94rem;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 1.8;
+}
+.faq-item.active .faq-answer {
+  max-height: 500px; /* Adjust based on content */
+  padding-bottom: 24px;
+}
+.faq-icon {
+  font-size: 1.2rem;
+  color: var(--terra);
+  transition: transform 0.3s;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
 </style>
 </head>
 <body>
@@ -1040,6 +1088,49 @@ footer {
   </div>
 </div>
 
+<!-- FAQ -->
+<div class="wrap">
+  <div class="eyebrow reveal">Common Questions</div>
+  <h2 class="display reveal">Clarity in <em>Every Detail</em></h2>
+  
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-question">What if the tenant doesn't pay rent on time? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        We act as your professional enforcement arm. We send automated reminders 3 days before the due date, followed by active phone calls and physical visits if needed. We also maintain a complete digital audit trail for any legal requirements.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Who pays for the repairs and maintenance? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        The owner is responsible for repair costs, but Homestance handles the execution. No work begins without your explicit sign-off on a quote. We recommend paying major vendor bills directly for 100% transparency.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">How do you verify your vendors? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        We don't use random app-based workers. We have a vetted network of trusted professionals in Mumbai who understand premium property standards. Every job includes high-resolution "Before" and "After" photo/video proof.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Do you hold my property keys? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        Yes, keys are kept in a secure location and only released to authorized Relationship Managers for scheduled inspections or approved maintenance. Every access is logged digitally with time and purpose.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I switch plans later? <span class="faq-icon">+</span></button>
+      <div class="faq-answer">
+        Absolutely. If your property goes from vacant to rented, we seamlessly transition you to the appropriate plan. You can upgrade or downgrade your service tier with a simple 30-day notice.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <div class="wrap wrap-ivory2" id="contact">
   <div class="contact-layout">
@@ -1145,5 +1236,33 @@ Plan Interest: ${plan}`;
   window.open(url, "_blank");
 }
 </script>
+
+<script>
+// Tab Switching logic
+function showPanel(panelId, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.ptab').forEach(b => b.classList.remove('on'));
+  document.getElementById(panelId).classList.add('on');
+  btn.classList.add('on');
+}
+
+// FAQ Accordion logic
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.parentElement;
+    faqItem.classList.toggle('active');
+  });
+});
+
+// Scroll Reveal logic (optional but recommended for your design)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('in');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
