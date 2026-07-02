@@ -1,7 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homestance — Your Home in Mumbai, Managed Without You</title>
@@ -11,24 +9,24 @@
 <meta name="keywords" content="property management Mumbai, rent management Mumbai, vacant property care Mumbai">
 <meta name="author" content="Homestance">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&amp;display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 
 :root {
-  --ink:      #0F0E0C;
-  --ink-2:    #2C2A27;
-  --ink-3:    #5C5954;
-  --ivory:    #F9F6F0;
-  --ivory-2:  #F0EBE2;
-  --ivory-3:  #E3DDD4;
-  --terra:    #C4714A;
-  --terra-lt: #E8C4B0;
-  --terra-pl: #F7EDE7;
-  --serif:    'Cormorant Garamond', Georgia, serif;
-  --sans:     'Outfit', system-ui, sans-serif;
-  --rule:     rgba(15,14,12,0.1);
+  --ink:      #0D0D0D;
+  --ink-2:    #262626;
+  --ink-3:    #5C5C5C;
+  --ivory:    #FFFFFF;
+  --ivory-2:  #F2F2F2;
+  --ivory-3:  #E0E0E0;
+  --terra:    #4D4D4D;
+  --terra-lt: #B3B3B3;
+  --terra-pl: #F5F5F5;
+  --serif:    'Open Sans', system-ui, sans-serif;
+  --sans:     'Open Sans', system-ui, sans-serif;
+  --rule:     rgba(13,13,13,0.1);
 }
 
 body {
@@ -46,7 +44,7 @@ nav {
   height: 68px;
   display: flex; align-items: center;
   padding: 0 5%;
-  background: rgba(249,246,240,0.92);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--rule);
   gap: 0;
@@ -247,9 +245,9 @@ nav ul a:hover { color: var(--terra); }
 .hero-card.accent {
   background: var(--ink);
 }
-.hero-card.accent .hero-card-label { color: rgba(249,246,240,0.45); }
+.hero-card.accent .hero-card-label { color: rgba(255,255,255,0.45); }
 .hero-card.accent .hero-card-val { color: var(--terra-lt); }
-.hero-card.accent .hero-card-sub { color: rgba(249,246,240,0.5); }
+.hero-card.accent .hero-card-sub { color: rgba(255,255,255,0.5); }
 
 /* ── TICKER STRIP ── */
 .ticker-strip {
@@ -297,8 +295,8 @@ nav ul a:hover { color: var(--terra); }
   margin-bottom: 18px;
 }
 .eyebrow::before { content: ''; display: block; width: 36px; height: 1px; background: var(--terra); }
-.eyebrow-light { color: rgba(228,196,176,0.9); }
-.eyebrow-light::before { background: rgba(228,196,176,0.9); }
+.eyebrow-light { color: rgba(179,179,179,0.9); }
+.eyebrow-light::before { background: rgba(179,179,179,0.9); }
 
 h2.display {
   font-family: var(--serif);
@@ -319,7 +317,7 @@ h2.display-light { color: var(--ivory); }
   line-height: 1.75;
   margin-bottom: 60px;
 }
-.lead-light { color: rgba(249,246,240,0.5); }
+.lead-light { color: rgba(255,255,255,0.5); }
 
 /* ── SERVICES ── */
 .services-layout {
@@ -425,7 +423,7 @@ h2.display-light { color: var(--ivory); }
 .pricing-tabs {
   display: inline-flex;
   gap: 0;
-  border: 1px solid rgba(249,246,240,0.15);
+  border: 1px solid rgba(255,255,255,0.15);
   margin-bottom: 52px;
   overflow: hidden;
 }
@@ -438,12 +436,12 @@ h2.display-light { color: var(--ivory); }
   text-transform: uppercase;
   background: transparent;
   border: none;
-  color: rgba(249,246,240,0.4);
+  color: rgba(255,255,255,0.4);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 .ptab.on { background: var(--terra); color: var(--ivory); }
-.ptab:hover:not(.on) { color: rgba(249,246,240,0.75); }
+.ptab:hover:not(.on) { color: rgba(255,255,255,0.75); }
 
 .panel { display: none; }
 .panel.on { display: block; }
@@ -454,16 +452,16 @@ h2.display-light { color: var(--ivory); }
   gap: 2px;
 }
 .plan {
-  background: rgba(249,246,240,0.04);
-  border: 1px solid rgba(249,246,240,0.08);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 44px 36px;
   position: relative;
   transition: border-color 0.25s, background 0.25s;
 }
-.plan:hover { border-color: rgba(196,113,74,0.35); background: rgba(196,113,74,0.05); }
+.plan:hover { border-color: rgba(77,77,77,0.35); background: rgba(77,77,77,0.05); }
 .plan.star {
   border-color: var(--terra);
-  background: rgba(196,113,74,0.07);
+  background: rgba(77,77,77,0.07);
 }
 .plan-rec {
   position: absolute;
@@ -497,21 +495,21 @@ h2.display-light { color: var(--ivory); }
 .plan-gst {
   font-size: 0.75rem;
   font-weight: 300;
-  color: rgba(249,246,240,0.35);
+  color: rgba(255,255,255,0.35);
   margin-bottom: 36px;
 }
 .plan-ul {
   list-style: none;
-  border-top: 1px solid rgba(249,246,240,0.07);
+  border-top: 1px solid rgba(255,255,255,0.07);
   padding-top: 24px;
   margin-bottom: 36px;
 }
 .plan-ul li {
   font-size: 0.83rem;
   font-weight: 300;
-  color: rgba(249,246,240,0.65);
+  color: rgba(255,255,255,0.65);
   padding: 8px 0;
-  border-bottom: 1px solid rgba(249,246,240,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
   display: flex; gap: 10px;
   line-height: 1.5;
 }
@@ -527,7 +525,7 @@ h2.display-light { color: var(--ivory); }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid rgba(249,246,240,0.15);
+  border: 1px solid rgba(255,255,255,0.15);
   color: var(--ivory);
   transition: background 0.2s, border-color 0.2s;
 }
@@ -689,13 +687,13 @@ footer {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  border-top: 1px solid rgba(249,246,240,0.06);
+  border-top: 1px solid rgba(255,255,255,0.06);
 }
 .footer-logo { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; color: var(--ivory); letter-spacing: 0.04em; text-decoration: none; }
 .footer-logo i { font-style: italic; color: var(--terra); }
-.footer-mid { font-size: 0.75rem; color: rgba(249,246,240,0.3); letter-spacing: 0.03em; }
+.footer-mid { font-size: 0.75rem; color: rgba(255,255,255,0.3); letter-spacing: 0.03em; }
 .footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 0.75rem; color: rgba(249,246,240,0.35); text-decoration: none; transition: color 0.2s; }
+.footer-links a { font-size: 0.75rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--terra-lt); }
 
 /* ── SCROLL REVEAL ── */
@@ -820,7 +818,7 @@ footer {
         <div class="hero-card-sub">we handle everything end to end</div>
       </div>
 <div class="hero-card">
-        <div class="hero-card-label">RENT & PAYMENTS</div>
+        <div class="hero-card-label">RENT &amp; PAYMENTS</div>
         <div class="hero-card-val">Your money stays with you. Always.</div>
         <div class="hero-card-sub">Rent goes directly to your bank account.</div>
       </div>
@@ -840,7 +838,7 @@ footer {
     <span class="ticker-item">Rent management</span>
     <span class="ticker-item">Inspection reports</span>
     <span class="ticker-item">Tenant coordination</span>
-    <span class="ticker-item">Legal & compliance</span>
+    <span class="ticker-item">Legal &amp; compliance</span>
     <span class="ticker-item">Verified vendor network</span>
     <span class="ticker-item">Document storage</span>
     <span class="ticker-item">Society coordination</span>
@@ -848,7 +846,7 @@ footer {
     <span class="ticker-item">Rent management</span>
     <span class="ticker-item">Inspection reports</span>
     <span class="ticker-item">Tenant coordination</span>
-    <span class="ticker-item">Legal & compliance</span>
+    <span class="ticker-item">Legal &amp; compliance</span>
     <span class="ticker-item">Verified vendor network</span>
     <span class="ticker-item">Document storage</span>
     <span class="ticker-item">Society coordination</span>
@@ -884,7 +882,7 @@ footer {
         <span class="svc-tag">Rent receipts</span>
         <span class="svc-tag">Tenant communication</span>
         <span class="svc-tag">Maintenance coordination</span>
-        <span class="svc-tag">Legal & compliance</span>
+        <span class="svc-tag">Legal &amp; compliance</span>
         <span class="svc-tag">Document storage</span>
       </div>
       <a href="#pricing" class="svc-arrow">↗</a>
@@ -907,7 +905,7 @@ footer {
       <div class="svc-tags">
         <span class="svc-tag">Vetted vendors</span>
         <span class="svc-tag">Owner approval first</span>
-        <span class="svc-tag">Before & after proof</span>
+        <span class="svc-tag">Before &amp; after proof</span>
         <span class="svc-tag">Service records</span>
       </div>
     </div>
@@ -1264,5 +1262,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-</body>
-</html>
+
+
+</body></html>
